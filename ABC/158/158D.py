@@ -1,20 +1,22 @@
-s1 = input()
-s2 = s1[::-1]
+from collections import deque
+s = deque(input())
 q = int(input())
-x = 0
+flag = True
 for i in range(q):
-    query = input().split()
-    if query[0] == '1':
-        x += 1
+    x = input()
+    if x == '1':
+        flag = not flag
     else :
-        y = x + int(query[1])
-        if y % 2 == 0:
-            s1 = s1 + query[2]
-            s2 = query[2] + s2
+        if x[2] == '1' and flag :
+            s.appendleft(x[4])
+        elif x[2] == '2' and not flag :
+            s.appendleft(x[4])
         else :
-            s1 = query[2] + s1
-            s2 = s2 + query[2]
-if x % 2 == 0:
-    print(s1)
+            s.append(x[4])
+if flag:
+    for i in s :
+        print(i, end='')
 else :
-    print(s2)
+    for i in range(1, len(s)+1):
+        print(s[-i], end='')
+print('')
