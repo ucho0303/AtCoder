@@ -1,8 +1,8 @@
 mod = 10**9+7
 n,m = map(int,input().split())
-a = [0]*m
+a = set()
 for i in range(m):
-    a[i] = int(input())
+    a.add(int(input()))
 dp = [0]*(n+1)
 dp[0] = 1
 for i in range(1,n+1) :
